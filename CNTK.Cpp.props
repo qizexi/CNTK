@@ -23,14 +23,19 @@
     <NoOptBuild>false</NoOptBuild>
     <NoOptBuild Condition="$(Configuration.Contains('NoOpt'))">true</NoOptBuild>
 
-    <NvmlInclude>"c:\Program Files\NVIDIA Corporation\GDK\gdk_win7_amd64_release\nvml\include"</NvmlInclude>
-    <NvmlLibPath>"c:\Program Files\NVIDIA Corporation\GDK\gdk_win7_amd64_release\nvml\lib"</NvmlLibPath>
-
     <CudaVersion/>
     <CudaVersion Condition="Exists('$(CUDA_PATH_V8_0)') And '$(CudaVersion)' == ''">8.0</CudaVersion>
     <CudaVersion Condition="Exists('$(CUDA_PATH_V7_5)') And '$(CudaVersion)' == ''">7.5</CudaVersion>
     <CudaVersion Condition="Exists('$(CUDA_PATH_V7_0)') And '$(CudaVersion)' == ''">7.0</CudaVersion>
 
+    <NvmlInclude />
+    <NvmlInclude Condition="'$(CudaVersion)' == '7.5'">"c:\Program Files\NVIDIA Corporation\GDK\gdk_win7_amd64_release\nvml\include"</NvmlInclude>
+    <NvmlInclude Condition="'$(CudaVersion)' == '8.0'" />
+
+    <NvmlLibPath />
+    <NvmlLibPath Condition="'$(CudaVersion)' == '7.5'">"c:\Program Files\NVIDIA Corporation\GDK\gdk_win7_amd64_release\nvml\lib"</NvmlLibPath>
+    <NvmlLibPath Condition="'$(CudaVersion)' == '8.0'" />
+    
     <HasOpenCv>false</HasOpenCv>
     <HasOpenCv Condition="Exists('$(OPENCV_PATH)') Or Exists('$(OPENCV_PATH_V31)')">true</HasOpenCv>
     
