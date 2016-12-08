@@ -71,7 +71,7 @@
       <Command>
         if "$(HasOpenCv)" == "true" xcopy /I /D /Y "$(OpenCvBinPath)\$(OpenCvWorld).dll" "$(TargetDir)"
         if "$(UseZip)" == "true" xcopy /I /D /Y "$(ZLIB_PATH)\bin\zip.dll" "$(TargetDir)"
-        if "$(UseZip)" == "true" if exist "$(ZLIB_PATH)\bin\zlib1.dll" (xcopy /I /D /Y "$(ZLIB_PATH)\bin\zlib1.dll" "$(TargetDir)") else (copy /Y "$(ZLIB_PATH)\bin\zlib.dll" "$(TargetDir)\zlib1.dll")
+        if "$(UseZip)" == "true" xcopy /I /D /Y "$(ZLIB_PATH)\bin\zlib.dll" "$(TargetDir)"
       </Command>
       <Message>Copying dependencies</Message>
     </PostBuildEvent>
