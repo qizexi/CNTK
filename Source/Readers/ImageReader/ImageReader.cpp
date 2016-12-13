@@ -80,7 +80,8 @@ ImageReader::ImageReader(const ConfigParameters& config)
 
     m_packer = std::make_shared<FramePacker>(
         m_sequenceEnumerator,
-        m_streams);
+        m_streams,
+        true);
 }
 
 std::vector<StreamDescriptionPtr> ImageReader::GetStreamDescriptions()
