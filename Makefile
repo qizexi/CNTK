@@ -637,7 +637,7 @@ $(EVALV2_SAMPLE_CLIENT): $(EVALV2_SAMPLE_CLIENT_OBJ) | $(CNTKLIBRARY_LIB) $(PERF
 	@echo $(SEPARATOR)
 	@mkdir -p $(dir $@)
 	@echo building $(EVALV2_SAMPLE_CLIENT) for $(ARCH) with build type $(BUILDTYPE)
-	$(CXX) $(LDFLAGS) $(patsubst %,-L%, $(LIBDIR) $(LIBPATH) $(GDK_NVML_LIB_PATH)) $(patsubst %,$(RPATH)%, $(ORIGINLIBDIR) $(LIBPATH)) -o $@ $^ $(LIBS) -l$(CNTKLIBRARY) -l$(CNTKMATH) -l$(PERF_PROFILER)
+	$(CXX) $(LDFLAGS) $(patsubst %,-L%, $(LIBDIR) $(LIBPATH) $(GDK_NVML_LIB_PATH)) $(patsubst %,$(RPATH)%, $(ORIGINLIBDIR) $(LIBPATH)) -o $@ $^ $(LIBS) -l$(CNTKLIBRARY) -l$(CNTKMATH) $(lMULTIVERSO) -l$(PERF_PROFILER)
 
 ########################################
 # BinaryReader plugin
